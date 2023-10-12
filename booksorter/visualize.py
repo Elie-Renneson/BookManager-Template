@@ -3,8 +3,18 @@ import matplotlib.animation as animation
 import sys
 
 sorting_steps = []  # Array to store sorting steps for visualization
+filename = None
+if len(sys.argv) > 3:
+    filename = sys.argv[3]
+
+def _write_debug(arr):
+    if filename != None:
+        f = open(filename, "a")
+        f.write(str(arr) + "\n")
+        f.close()
 
 def visualize_sorting(arr):
+    _write_debug(arr)
     sorting_steps.append(arr.copy())  # Add a copy of the array to the sorting steps
 
 def visualize_sorting_animation():
