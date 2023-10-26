@@ -12,6 +12,15 @@ spec = importlib.util.spec_from_file_location("module.name", script_path)
 module = importlib.util.module_from_spec(spec)
 spec.loader.exec_module(module)
 sort_function = getattr(module, sort_func_name)  # Get the function based on its name
+filename = None
+if len(sys.argv) > 3:
+    filename = sys.argv[3]
+
+# clear file
+if filename != None:
+    f = open(filename, "w")
+    f.write("")
+    f.close()
 
 from visualize import visualize_sorting, visualize_sorting_animation
 
